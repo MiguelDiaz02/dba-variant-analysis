@@ -1,12 +1,5 @@
 # Subunit Comparison Analysis: 40S vs 60S Ribosomal Protein Variants in DBA
 
-**Generated:** 2026-03-22
-**Script:** `scripts/subunit_comparison.py`
-**Local cohort:** 14 variants
-**ClinVar: not available for this run (run without `--skip-clinvar` and with `variant_summary.txt.gz` to enable)**
-
----
-
 ## 1. Methodological Basis
 
 ### 1.1 Biological Rationale
