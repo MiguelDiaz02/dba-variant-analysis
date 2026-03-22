@@ -22,7 +22,8 @@ graph_background/
 # ── Outputs generados (reproducibles desde el pipeline) ────────────────────
 graphical_results/
 graphical_results2/
-reports/
+reports/*.pdf
+reports/*.log
 imagenes/
 pipeline.log
 *.log
