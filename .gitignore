@@ -20,6 +20,7 @@ csv_files/
 graph_background/
 
 # ── Outputs generados (reproducibles desde el pipeline) ────────────────────
+graphical_results/
 reports/*.log
 imagenes/
 pipeline.log
