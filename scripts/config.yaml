@@ -1,0 +1,91 @@
+# =============================================================================
+# config.yaml — Configuración del pipeline DBA Variant Analysis
+# =============================================================================
+# Edita este archivo para adaptar el pipeline a tu entorno.
+# Todas las rutas son relativas al directorio scripts/ (donde está este archivo).
+# Usa rutas absolutas si prefieres (p. ej. C:/Users/.../graphical_results).
+# =============================================================================
+
+paths:
+  variants_csv:        "../csv_files/TABLA_VARIANTES_IBMFS_DBA1.csv"
+  clinvar_gz:          "../additional_files/variant_summary.txt.gz"
+  graphical_results:   "../graphical_results"
+  graphical_results2:  "../graphical_results2"
+  reports:             "../reports"
+  log_file:            "../pipeline.log"
+
+# Credenciales NCBI (requeridas si se usa la API Entrez como fuente de ClinVar)
+entrez:
+  email:                    "g5diazcamposmiguel@gmail.com"
+  max_results:              500
+  sleep_between_requests:   0.15   # segundos entre peticiones (respeta rate limit)
+
+# Parámetros estadísticos
+analysis:
+  hotspot_window:              10    # tamaño de ventana en aminoácidos
+  alpha:                       0.05  # umbral de significancia nominal (antes de Bonferroni)
+  min_variants_for_hotspot:    20    # mínimo de variantes ClinVar para correr el análisis
+
+# Configuración de exportación de figuras
+# Formatos soportados: png, svg, pdf (requieren kaleido: pip install kaleido), html
+output:
+  formats:   ["png", "svg"]
+  width:     1400         # píxeles de ancho
+  height:    700          # píxeles de alto
+  dpi_scale: 3            # factor de escala para PNG (3 ≈ 300 DPI para publicación)
+
+# =============================================================================
+# Genes de interés: proteínas ribosomales asociadas a DBA
+# Añade o elimina entradas según sea necesario.
+# =============================================================================
+genes:
+  - name:           RPS19
+    subunit:        40S
+    protein_length: 145
+    uniprot_id:     P39019
+
+  - name:           RPS24
+    subunit:        40S
+    protein_length: 133
+    uniprot_id:     P62847
+
+  - name:           RPS26
+    subunit:        40S
+    protein_length: 115
+    uniprot_id:     P62854
+
+  - name:           RPL5
+    subunit:        60S
+    protein_length: 297
+    uniprot_id:     P46777
+
+  - name:           RPL11
+    subunit:        60S
+    protein_length: 178
+    uniprot_id:     P62913
+
+  - name:           RPL18
+    subunit:        60S
+    protein_length: 188
+    uniprot_id:     Q07020
+
+  - name:           RPL26
+    subunit:        60S
+    protein_length: 145
+    uniprot_id:     P61254
+
+# =============================================================================
+# Configuración de visualización
+# =============================================================================
+visualization:
+  acmg_colors:
+    P:    "#d73027"   # Patogénica — rojo
+    LP:   "#fc8d59"   # Probablemente Patogénica — naranja
+    VUS:  "#fee08b"   # Variante de Significado Incierto — amarillo
+
+  variant_markers:    # marcadores matplotlib → símbolo plotly (conversión interna)
+    Missense:   "o"   # círculo
+    Nonsense:   "s"   # cuadrado
+    Frameshift: "D"   # diamante
+    Splice:     "^"   # triángulo
+    Other:      "X"   # X

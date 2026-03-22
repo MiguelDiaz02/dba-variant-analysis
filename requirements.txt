@@ -1,0 +1,23 @@
+# DBA Variant Analysis Pipeline — dependencias Python
+# Instalar con: pip install -r requirements.txt
+
+# Análisis de datos
+pandas>=2.0
+numpy>=1.24
+
+# Estadística
+scipy>=1.10
+
+# Visualización (plotly — graph_background/plotly.py)
+plotly>=5.18
+
+# Exportación estática de figuras (PNG, SVG, PDF)
+# Si kaleido no está disponible, el pipeline hace fallback a HTML
+kaleido>=0.2
+
+# APIs externas
+requests>=2.28
+biopython>=1.81
+
+# Configuración
+PyYAML>=6.0
